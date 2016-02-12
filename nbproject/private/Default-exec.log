@@ -1,0 +1,22 @@
+called: /usr/bin/gcc
+	/home/pavel/reserved/common_code/db2dhcp-0.1.a.10/src
+	/usr/bin/gcc
+	-DHAVE_CONFIG_H
+	-I.
+	-I..
+	-Wall
+	-Werror
+	-pthread
+	-g3
+	-gdwarf-2
+	-MT
+	db2dhcp-dhcp_queue.o
+	-MD
+	-MP
+	-MF
+	.deps/db2dhcp-dhcp_queue.Tpo
+	-c
+	-o
+	db2dhcp-dhcp_queue.o
+	dhcp_queue.c
+

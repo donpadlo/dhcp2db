@@ -1,0 +1,46 @@
+/usr/bin/make  all-recursive
+make[1]: вход в каталог «/home/pavel/reserved/common_code/db2dhcp-0.1.a.10»
+Making all in src
+make[2]: вход в каталог «/home/pavel/reserved/common_code/db2dhcp-0.1.a.10/src»
+/usr/bin/gcc -DHAVE_CONFIG_H -I. -I..    -Wall -Werror -pthread -g3 -gdwarf-2 -MT db2dhcp-dhcp_queue.o -MD -MP -MF .deps/db2dhcp-dhcp_queue.Tpo -c -o db2dhcp-dhcp_queue.o `test -f 'dhcp_queue.c' || echo './'`dhcp_queue.c
+In file included from dhcp_queue.c:12:0:
+misc_functions.h:45:17: error: inline function ‘make_default_netmask’ declared but never defined [-Werror]
+ inline uint32_t make_default_netmask(const uint32_t addr);
+                 ^
+misc_functions.h:27:15: error: inline function ‘gethostname_error’ declared but never defined [-Werror]
+ inline char * gethostname_error(void);
+               ^
+misc_functions.h:26:24: error: inline function ‘get_result_value’ declared but never defined [-Werror]
+ inline result_item_t * get_result_value(query_result_t * result, uint16_t need_code);
+                        ^
+misc_functions.h:17:15: error: inline function ‘hex_to_str’ declared but never defined [-Werror]
+ inline char * hex_to_str(int count, const uint8_t *bin_addr, char * str_addr);
+               ^
+misc_functions.h:15:15: error: inline function ‘etheraddr_bin_to_str’ declared but never defined [-Werror]
+ inline char * etheraddr_bin_to_str(const uint8_t * bin_addr, char * str_addr);
+               ^
+misc_functions.h:13:13: error: inline function ‘free_query_result’ declared but never defined [-Werror]
+ inline void free_query_result(query_result_t * result);
+             ^
+In file included from dhcp_queue.c:11:0:
+log.h:31:13: error: inline function ‘log_reopen’ declared but never defined [-Werror]
+ inline void log_reopen(void);
+             ^
+log.h:30:12: error: inline function ‘log_fileno’ declared but never defined [-Werror]
+ inline int log_fileno(void);
+            ^
+log.h:28:12: error: inline function ‘log_close’ declared but never defined [-Werror]
+ inline int log_close(void);
+            ^
+log.h:27:12: error: inline function ‘log_init’ declared but never defined [-Werror]
+ inline int log_init(const char * file_name, uint32_t flags, pid_t uid);
+            ^
+cc1: all warnings being treated as errors
+Makefile:362: ошибка выполнения рецепта для цели «db2dhcp-dhcp_queue.o»
+make[2]: *** [db2dhcp-dhcp_queue.o] Ошибка 1
+make[2]: выход из каталога «/home/pavel/reserved/common_code/db2dhcp-0.1.a.10/src»
+Makefile:297: ошибка выполнения рецепта для цели «all-recursive»
+make[1]: *** [all-recursive] Ошибка 1
+make[1]: выход из каталога «/home/pavel/reserved/common_code/db2dhcp-0.1.a.10»
+Makefile:226: ошибка выполнения рецепта для цели «all»
+make: *** [all] Ошибка 2

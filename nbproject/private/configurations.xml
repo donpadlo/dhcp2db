@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="src">
+        <df name=".deps">
+        </df>
+        <df name=".libs">
+        </df>
+        <in>common_includes.h</in>
+        <in>configuration.c</in>
+        <in>configuration.h</in>
+        <in>db2dhcp.c</in>
+        <in>db2dhcp.h</in>
+        <in>db2dhcp_types.h</in>
+        <in>db_fb_client.c</in>
+        <in>db_fb_client.h</in>
+        <in>db_my_client.c</in>
+        <in>db_my_client.h</in>
+        <in>db_pg_client.c</in>
+        <in>db_pg_client.h</in>
+        <in>dhcp.h</in>
+        <in>dhcp_cache.c</in>
+        <in>dhcp_cache.h</in>
+        <in>dhcp_process.c</in>
+        <in>dhcp_process.h</in>
+        <in>dhcp_queue.c</in>
+        <in>dhcp_queue.h</in>
+        <in>log.c</in>
+        <in>log.h</in>
+        <in>misc_functions.c</in>
+        <in>misc_functions.h</in>
+        <in>net.h</in>
+        <in>net_functions.c</in>
+        <in>net_functions.h</in>
+        <in>rbtree.c</in>
+        <in>rbtree.h</in>
+        <in>rbtree_misc.c</in>
+        <in>rbtree_misc.h</in>
+        <in>rbtree_stack.c</in>
+        <in>rbtree_stack.h</in>
+        <in>requests_handling.c</in>
+        <in>requests_handling.h</in>
+      </df>
+      <in>config.h</in>
+    </df>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>2</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir>.</rundir>
+        <buildfirst>false</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>
