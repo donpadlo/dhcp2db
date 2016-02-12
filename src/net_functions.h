@@ -28,7 +28,7 @@ void assemble_net_header_dhcp
 extern int get_packet(dhcp_device_t * dhcp_dev, uint8_t * ether_packet);
 
 /* Send packet to network. 'data_len' - all packet data length , include network headers */
-extern int send_packet(dhcp_device_t * dhcp_dev, const uint8_t *snd_data, int data_len);
+inline int send_packet(dhcp_device_t * dhcp_dev, const uint8_t *snd_data, int data_len);
 
 /* Need called for activate network subsystem on WIN32 platforms */
 extern int network_subsystem_init(void);
