@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Мар 16 2016 г., 15:03
+-- Время создания: Мар 16 2016 г., 16:09
 -- Версия сервера: 5.6.28-0ubuntu0.15.10.1
 -- Версия PHP: 5.6.11-1ubuntu3.1
 
@@ -1040,7 +1040,7 @@ CREATE TABLE IF NOT EXISTS `events_log` (
   `cmd` varchar(150) NOT NULL DEFAULT '' COMMENT 'Функция в интерфейсе инициировавшая действие',
   `error` varchar(255) DEFAULT NULL COMMENT 'Сообщение об ошибке если операция была прервана',
   `descr` varchar(255) NOT NULL DEFAULT '' COMMENT 'Краткое описание операции'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Лог событий';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Лог событий';
 
 --
 -- Дамп данных таблицы `events_log`
@@ -1048,7 +1048,10 @@ CREATE TABLE IF NOT EXISTS `events_log` (
 
 INSERT INTO `events_log` (`id`, `created`, `ip`, `type`, `personid`, `action`, `uri`, `cmd`, `error`, `descr`) VALUES
 (1, '2016-03-16 12:02:50', 2130706433, 0, 0, 4, '/sbss/admin/index.php', 'authorize', NULL, '<%@ Authorization %>: admin'),
-(2, '2016-03-16 12:03:28', 2130706433, 0, 0, 4, '/sbss/admin/index.php', 'authorize', NULL, '<%@ Authorization %>: admin');
+(2, '2016-03-16 12:03:28', 2130706433, 0, 0, 4, '/sbss/admin/index.php', 'authorize', NULL, '<%@ Authorization %>: admin'),
+(3, '2016-03-16 13:09:08', 2130706433, 0, 0, 4, '/sbss/admin/index.php', 'authorize', NULL, '<%@ Authorization %>: admin'),
+(4, '2016-03-16 13:09:26', 2130706433, 0, 1, 2, '/sbss/admin/index.php', 'setmanager', NULL, '<%@ Saving manager data %> Администратор (admin)'),
+(5, '2016-03-16 13:09:30', 2130706433, 0, 0, 4, '/sbss/admin/index.php', 'authorize', NULL, '<%@ Authorization %>: admin');
 
 -- --------------------------------------------------------
 
@@ -1435,7 +1438,7 @@ CREATE TABLE IF NOT EXISTS `managers` (
 --
 
 INSERT INTO `managers` (`id`, `login`, `pass`, `name`, `email`, `mobile`, `phone`, `descr`, `enabled`, `archive`, `redmine_id`, `redmine_key`, `duty`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Администратор', '', '', '', '', 1, 0, NULL, NULL, 0),
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Администратор', '', '', '', '', 1, 0, 0, '', 0),
 (2, 'sense', 'f5743daa1b0c190dc25ac146a657932e', 'Чернышев Алексей', 'init@yarteleservice.ru', '', '', '', 1, 0, 0, '', 0),
 (3, 'anton', '784742a66a3a0c271feced5b149ff8db', 'Меньшенин Антон', 'antonmenshenin@gmail.com', '', '', '', 1, 0, 0, '', 0),
 (4, 'haburin.s', '3f5bf43b9e5687d9be35ad60781d0f69', 'Хабурин Сергей', 'kabeltv-shek@mail.ru', '', '', '', 1, 0, 0, '', 0),
@@ -1485,13 +1488,6 @@ CREATE TABLE IF NOT EXISTS `manager_roles` (
   `roleid` int(5) NOT NULL COMMENT 'Номер роли',
   `managerid` int(10) NOT NULL COMMENT 'Идентификатор менеджера'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Роли назначенные менеджеру';
-
---
--- Дамп данных таблицы `manager_roles`
---
-
-INSERT INTO `manager_roles` (`roleid`, `managerid`) VALUES
-(1, 1);
 
 -- --------------------------------------------------------
 
@@ -3142,7 +3138,7 @@ ALTER TABLE `duty_events`
 -- AUTO_INCREMENT для таблицы `events_log`
 --
 ALTER TABLE `events_log`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Идентификатор записи в журнале',AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Идентификатор записи в журнале',AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT для таблицы `events_log_detail`
 --
