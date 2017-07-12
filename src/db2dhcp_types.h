@@ -352,6 +352,7 @@ typedef struct configuration
 	int			db_clients_count;
 	char		*query_discover;
 	char		*query_history;
+	char		*ip_bind;
 	char		*query_request;
 	char		*query_release;
 	dbm_description * dbm;
@@ -369,6 +370,7 @@ typedef struct configuration
 
 	dhcp_query_templ_t	*discover_template;
 	dhcp_query_templ_t	*history_template;
+	dhcp_query_templ_t	*ip_bind_template;
 	dhcp_query_templ_t	*request_template;
 	dhcp_query_templ_t	*release_template;
 

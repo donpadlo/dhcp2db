@@ -8,13 +8,13 @@
 /* #undef CONFIG_LIBPQ_FE_H */
 
 /* path to MySQL header */
-/* #undef CONFIG_MYSQL_H */
+#define CONFIG_MYSQL_H <mysql/mysql.h>
 
 /* whether need use FireBird */
 /* #undef CONFIG_USE_FIREBIRD */
 
 /* whether need use MySQL */
-/* #undef CONFIG_USE_MYSQL */
+#define CONFIG_USE_MYSQL 1
 
 /* whether need use PostgreSQL */
 /* #undef CONFIG_USE_POSTGRESQL */
@@ -63,7 +63,7 @@
 /* #undef HAVE_MYSQL_H */
 
 /* Define to 1 if you have the <mysql/mysql.h> header file. */
-/* #undef HAVE_MYSQL_MYSQL_H */
+#define HAVE_MYSQL_MYSQL_H 1
 
 /* Define to 1 if you have the <netinet/in.h> header file. */
 #define HAVE_NETINET_IN_H 1
@@ -193,7 +193,7 @@
 #define STDC_HEADERS 1
 
 /* Version number of package */
-#define VERSION "0.1.a.10_donpadlo"
+#define VERSION "0.1.a.10"
 
 /* Define for Solaris 2.5.1 so the uint32_t typedef from <sys/synch.h>,
    <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the

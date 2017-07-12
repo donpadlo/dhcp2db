@@ -20,7 +20,7 @@ extern int server_shutdown_flag;
 
 static void * dummy_reader(void * args);
 static int set_dhcp_filter(dhcp_device_t * dhcp_dev, const dhcp_proc_args_t * config);
-static int make_dummy_socket(uint16_t port);
+static int make_dummy_socket(uint16_t port,const char * ip_bind);
 static dhcp_parsed_message_t * parse_dhcp_message(dhcp_device_t * dhcp_dev, const uint8_t * ether_packet);
 static int get_dhcp_option(const dhcp_message_t *request, const uint16_t packet_len,
                         const int req_option, void * option_value, int value_size);
@@ -39,7 +39,7 @@ int run_dhcp_threads(dhcp_proc_thread_t **dhcp_threads, const server_configurati
 		request_handler_thread_t **db_clients)
 {
 	/* Make dummy socket for suppress ICMP-port unreacheble messagess on unicast DHCP messages */
-	CHECK_VALUE(make_dummy_socket(config->dhcp_server_port), "Can't create dummy socket.", 0);
+	CHECK_VALUE(make_dummy_socket(config->dhcp_server_port,config->ip_bind), "Can't create dummy socket.", 0);
 
     char errbuf[PCAP_ERRBUF_SIZE];
 	pcap_if_t *dev_list_start = NULL;
@@ -344,7 +344,7 @@ type_ok: ;
 	return out_message;
 }
 
-static int make_dummy_socket(uint16_t port)
+static int make_dummy_socket(uint16_t port,const char * ip_bind)
 {
 	static int dummy_socket;
     dummy_socket = socket(AF_INET, SOCK_DGRAM, 0);
@@ -358,8 +358,9 @@ static int make_dummy_socket(uint16_t port)
     bzero(&udp_sock, sizeof(udp_sock));
     udp_sock.sin_family = AF_INET;
     udp_sock.sin_port = htons(port);
-    udp_sock.sin_addr.s_addr = INADDR_ANY;
-
+    //udp_sock.sin_addr.s_addr = INADDR_ANY;
+    log_wr(DLOG, "--bind to IP %s (Gribov)",ip_bind);
+    udp_sock.sin_addr.s_addr = inet_addr(ip_bind);    
     if( bind(dummy_socket, (const struct sockaddr *) & udp_sock, sizeof(udp_sock)) )
     {
         log_wr(CLOG, "bind(): %s", strerror(errno));

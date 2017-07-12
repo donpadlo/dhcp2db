@@ -88,6 +88,7 @@ static const option_description_t cfg_options[] =
 	{"DBClientsCount", integer_option_handler, CALC_OFFSET(server_configuration, db_clients_count)},
 	{"QueryDiscover", string_option_handler, CALC_OFFSET(server_configuration, query_discover)},
 	{"QueryHistory", string_option_handler, CALC_OFFSET(server_configuration, query_history)},
+	{"IPtoBind", string_option_handler, CALC_OFFSET(server_configuration, ip_bind)},
 	{"QueryRequest", string_option_handler, CALC_OFFSET(server_configuration, query_request)},
 	/* TODO 40 QueryRequestRej - запрос выполняемый в случае если клиент не выбрал данный сервер */
 	/* TODO 40 QueryInform - нужно обрабатывать DHCPINFORM если указан этот запрос */
@@ -245,7 +246,10 @@ int read_configuration(int argc, char * argv[], server_configuration * config)
 	/* Making queries templates */
 	if( !(config->history_template = make_query_template(config->query_history, &config->vars_container)) )
 		return FAIL;
-
+	
+	/* Making queries templates */
+	if( !(config->ip_bind_template = make_query_template(config->ip_bind, &config->vars_container)) )
+		return FAIL;
 	
 	char *query_str = config->query_request ? config->query_request : config->query_discover;
 	if( !(config->request_template = make_query_template(query_str, &config->vars_container)) )
@@ -512,6 +516,9 @@ int check_basic_conf(server_configuration * config)
 		INVALID("SQL DHCPDISCOVER query missing.");
 	if(!config->query_history || !strlen(config->query_history))
 		INVALID("SQL DHCPHISTORY query missing.");
+	
+	if(!config->ip_bind || !strlen(config->ip_bind))
+		INVALID("SQL ip_bind not set!");
 
 	if((config->db_server_port < MIN_TCP_PORT) || (config->db_server_port > MAX_TCP_PORT) )
 		INVALID("Invalid database port value.");
